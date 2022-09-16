@@ -1,0 +1,1 @@
+This is going to be a simple chess player in a web browser.
