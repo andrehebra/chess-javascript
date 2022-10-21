@@ -1,0 +1,20 @@
+body {
+    background-color: brown;
+}
+
+.playGrid {
+    display: flex;
+}
+
+.square {
+    width: 100px;
+    height: 100px;
+}
+
+.blackSquare {
+    background-color: black;
+}
+
+.whiteSquare {
+    background-color: white;
+}
