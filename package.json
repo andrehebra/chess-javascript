@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "chess.js": "^1.0.0-alpha.0",
     "git": "^0.1.5"
   }
 }
