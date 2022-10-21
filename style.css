@@ -1,8 +1,15 @@
 body {
-    background-color: brown;
+    background-color: black;
+    align-items: center;
+    justify-content: center;
 }
 
 .playGrid {
+    align-items: center;
+    justify-content: center;
+}
+
+.row {
     display: flex;
 }
 
@@ -12,9 +19,13 @@ body {
 }
 
 .blackSquare {
-    background-color: black;
+    background-color: #779656;
 }
 
 .whiteSquare {
-    background-color: white;
+    background-color: #eeeed2;
+}
+
+.piece {
+    width: 100%;
 }
