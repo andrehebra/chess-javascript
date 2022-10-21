@@ -73,11 +73,11 @@ function standardGame() {
 
     //add Queens
     addPiece("d8", "qd");
-    addPiece("e1", "ql");
+    addPiece("d1", "ql");
 
     //add Kings 
     addPiece("e8", "kd");
-    addPiece("d1", "kl");
+    addPiece("e1", "kl");
     
     
 }
