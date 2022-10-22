@@ -94,4 +94,103 @@ function addPiece(position, piece) {
 }
 
 
-standardGame();
+//standardGame();
+
+
+function fenDisplay(input) {
+    let currentRow = 8;
+    let currentColumn = 1;
+
+    for (let i = 0; i < input.length; i++) {
+        switch (input[i]) {
+            case '1':
+                currentColumn += 1;
+                break;
+            case '2':
+                currentColumn += 2;
+                break;
+            case '3':
+                currentColumn += 3;
+                break;
+            case '4':
+                currentColumn += 4;
+                break;
+            case '5':
+                currentColumn += 5;
+                break;
+            case '6':
+                currentColumn += 6;
+                break;
+            case '7':
+                currentColumn += 7;
+                break;
+            case '8':
+                currentColumn += 8;
+                break;
+            case 'p':
+                addPiece(letterPosition[currentColumn-1] + currentRow, "pd");
+                currentColumn++;
+                break;
+            case 'r':
+                addPiece(letterPosition[currentColumn-1] + currentRow, "rd");
+                currentColumn++;
+                break;
+            case 'b':
+                addPiece(letterPosition[currentColumn-1] + currentRow, "bd");
+                currentColumn++;
+                break;
+            case 'n':
+                addPiece(letterPosition[currentColumn-1] + currentRow, "nd");
+                currentColumn++;
+                break;
+            case 'k':
+                addPiece(letterPosition[currentColumn-1] + currentRow, "kd");
+                currentColumn++;
+                break;
+            case 'q':
+                addPiece(letterPosition[currentColumn-1] + currentRow, "qd");
+                currentColumn++;
+                break;
+            case 'P':
+                addPiece(letterPosition[currentColumn-1] + currentRow, "pl");
+                currentColumn++;
+                break;
+            case 'R':
+                addPiece(letterPosition[currentColumn-1] + currentRow, "rl");
+                currentColumn++;
+                break;
+            case 'B':
+                addPiece(letterPosition[currentColumn-1] + currentRow, "bl");
+                currentColumn++;
+                break;
+            case 'N':
+                addPiece(letterPosition[currentColumn-1] + currentRow, "nl");
+                currentColumn++;
+                break;
+            case 'K':
+                addPiece(letterPosition[currentColumn-1] + currentRow, "kl");
+                currentColumn++;
+                break;
+            case 'Q':
+                addPiece(letterPosition[currentColumn-1] + currentRow, "ql");
+                currentColumn++;
+                break;
+        }
+        
+
+        if (input[i] == '/') {
+            currentRow--;
+            currentColumn = 1;
+        }
+
+        if (currentColumn == 9 && currentRow == 1) {
+            break;
+        }
+                
+    }
+}
+
+//possible numbers: 1,2,3,4,5,6,7
+//possible pieces: p,n,r,b,q,k,P,N,R,B,Q,K
+
+fenDisplay("4k2r/6r1/8/8/8/8/3R4/R3K3 w Qk")
