@@ -1,42 +1,10 @@
 const playGrid = document.getElementById("playGrid");
 
 
-const letterPosition = ["a", "b", "c", "d", "e", "f", "g", "h"]
+const letterPosition = ["A", "B", "C", "D", "E", "F", "G", "H"]
 let startingColor = "whiteSquare";
 
-for (let i = 8; i >= 1; i--) {
 
-    const row = document.createElement("div");
-    row.classList.add("row");
-
-    if (i % 2 == 0) {
-        startingColor = "whiteSquare";
-    } else {
-        startingColor = "blackSquare";
-    }
-
-    for (let j = 0; j <= 7; j++) {
-        const square = document.createElement("div");
-
-        square.className = startingColor;
-
-        if (startingColor == "whiteSquare") {
-            startingColor = "blackSquare";
-        } else {
-            startingColor = "whiteSquare";
-        }
-
-        square.classList.add(letterPosition[j]);
-        square.classList.add(i);
-        square.classList.add("square");
-
-        square.id = letterPosition[j] + i
-
-        row.appendChild(square);
-
-    }
-    playGrid.appendChild(row);
-}
 
 
 function standardGame() {
@@ -82,10 +50,10 @@ function standardGame() {
     
 }
 
-function addPiece(position, piece) {
+function addPiece(position, piece, type) {
     const pieceImage = document.createElement("img");
     pieceImage.src = "./pieces/" + piece + ".svg";
-    pieceImage.className = "piece";
+    pieceImage.className = type;
 
     const location = document.getElementById(position);
     location.classList.add(piece);
@@ -128,51 +96,51 @@ function fenDisplay(input) {
                 currentColumn += 8;
                 break;
             case 'p':
-                addPiece(letterPosition[currentColumn-1] + currentRow, "pd");
+                addPiece(letterPosition[currentColumn-1] + currentRow, "pd", 'piece');
                 currentColumn++;
                 break;
             case 'r':
-                addPiece(letterPosition[currentColumn-1] + currentRow, "rd");
+                addPiece(letterPosition[currentColumn-1] + currentRow, "rd", 'piece');
                 currentColumn++;
                 break;
             case 'b':
-                addPiece(letterPosition[currentColumn-1] + currentRow, "bd");
+                addPiece(letterPosition[currentColumn-1] + currentRow, "bd", 'piece');
                 currentColumn++;
                 break;
             case 'n':
-                addPiece(letterPosition[currentColumn-1] + currentRow, "nd");
+                addPiece(letterPosition[currentColumn-1] + currentRow, "nd", 'piece');
                 currentColumn++;
                 break;
             case 'k':
-                addPiece(letterPosition[currentColumn-1] + currentRow, "kd");
+                addPiece(letterPosition[currentColumn-1] + currentRow, "kd", 'piece');
                 currentColumn++;
                 break;
             case 'q':
-                addPiece(letterPosition[currentColumn-1] + currentRow, "qd");
+                addPiece(letterPosition[currentColumn-1] + currentRow, "qd", 'piece');
                 currentColumn++;
                 break;
             case 'P':
-                addPiece(letterPosition[currentColumn-1] + currentRow, "pl");
+                addPiece(letterPosition[currentColumn-1] + currentRow, "pl", 'piece');
                 currentColumn++;
                 break;
             case 'R':
-                addPiece(letterPosition[currentColumn-1] + currentRow, "rl");
+                addPiece(letterPosition[currentColumn-1] + currentRow, "rl", 'piece');
                 currentColumn++;
                 break;
             case 'B':
-                addPiece(letterPosition[currentColumn-1] + currentRow, "bl");
+                addPiece(letterPosition[currentColumn-1] + currentRow, "bl", 'piece');
                 currentColumn++;
                 break;
             case 'N':
-                addPiece(letterPosition[currentColumn-1] + currentRow, "nl");
+                addPiece(letterPosition[currentColumn-1] + currentRow, "nl", 'piece');
                 currentColumn++;
                 break;
             case 'K':
-                addPiece(letterPosition[currentColumn-1] + currentRow, "kl");
+                addPiece(letterPosition[currentColumn-1] + currentRow, "kl", 'piece');
                 currentColumn++;
                 break;
             case 'Q':
-                addPiece(letterPosition[currentColumn-1] + currentRow, "ql");
+                addPiece(letterPosition[currentColumn-1] + currentRow, "ql", 'piece');
                 currentColumn++;
                 break;
         }
@@ -190,7 +158,96 @@ function fenDisplay(input) {
     }
 }
 
+function clearBoard() {
+
+    const deleteChildren = document.getElementById('playGrid');
+    deleteChildren.innerHTML = '';
+
+    for (let i = 8; i >= 1; i--) {
+
+        const row = document.createElement("div");
+        row.classList.add("row");
+    
+        if (i % 2 == 0) {
+            startingColor = "whiteSquare";
+        } else {
+            startingColor = "blackSquare";
+        }
+    
+        for (let j = 0; j <= 7; j++) {
+            const square = document.createElement("div");
+    
+            square.className = startingColor;
+    
+            if (startingColor == "whiteSquare") {
+                startingColor = "blackSquare";
+            } else {
+                startingColor = "whiteSquare";
+            }
+    
+            square.classList.add(letterPosition[j]);
+            square.classList.add(i);
+            square.classList.add("square");
+            
+
+
+            square.id = letterPosition[j] + i
+            square.onclick = function() {clickSquare(square.id)};
+    
+            row.appendChild(square);
+    
+        }
+        playGrid.appendChild(row);
+    }
+}
+
+function addCircles(square) {
+    console.log(square);
+    
+    const location = document.getElementById(square);
+    location.classList.add("darken");
+
+}
+
+let lastClick = '';
+
+function clickSquare(id) {
+    console.log(id);
+    console.log(game.moves(id))
+
+    clearBoard();
+    fenDisplay(game.exportFEN());
+
+    game.moves(id).forEach(addCircles);
+    
+    try {
+        game.move(lastClick, id);
+        clearBoard();
+        fenDisplay(game.exportFEN());
+    }
+    catch (err) {
+
+    }
+
+    
+    
+    lastClick = id;
+}
+
+clearBoard();
 //possible numbers: 1,2,3,4,5,6,7
 //possible pieces: p,n,r,b,q,k,P,N,R,B,Q,K
 
-fenDisplay("4k2r/6r1/8/8/8/8/3R4/R3K3 w Qk")
+//fenDisplay("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR");
+
+const chessGame = require('js-chess-engine');
+
+const game = new chessGame.Game();
+
+console.log(game);
+console.log(game.exportFEN())
+
+fenDisplay(game.exportFEN());
+
+
+

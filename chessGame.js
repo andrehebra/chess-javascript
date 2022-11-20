@@ -1,10 +1,5 @@
-import { Chess } from 'chess.js'
+const chessDisplay = require('./chessDisplay.js');
 
-const chess = new Chess()
+const chessGame = require('js-chess-engine');
 
-while (!chess.isGameOver()) {
-    const moves = chess.moves()
-    const move = moves[Math.floor(Math.random() * moves.length)]
-    chess.move(move)
-}
-console.log(chess.pgn())
+const game = new chessGame.Game();
