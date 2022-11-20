@@ -409,6 +409,9 @@ function clickSquare(id) {
     
     try {
         game.move(lastClick, id);
+
+        game.aiMove();
+
         clearBoard();
         fenDisplay(game.exportFEN());
     }
