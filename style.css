@@ -2,11 +2,12 @@ body {
     background-color: black;
     align-items: center;
     justify-content: center;
+    width: 100%;
 }
 
 .playGrid {
-    align-items: center;
-    justify-content: center;
+    align-items: space-around;
+    justify-content: space-around;
 }
 
 .row {
@@ -19,11 +20,11 @@ body {
 }
 
 .blackSquare {
-    background-color: #779656;
+    background-color: #4b7399;
 }
 
 .whiteSquare {
-    background-color: #eeeed2;
+    background-color: #eae9d2;
 }
 
 .piece {
