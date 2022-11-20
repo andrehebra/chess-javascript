@@ -250,7 +250,7 @@ const game = new chessGame.Game();
 console.log(game);
 console.log(game.exportFEN())
 
-game.aiMove();
+//game.aiMove();
 
 fenDisplay(game.exportFEN());
 
