@@ -165,8 +165,8 @@ function clearBoard() {
 
     for (let i = 8; i >= 1; i--) {
 
-        const row = document.createElement("div");
-        row.classList.add("row");
+        //const row = document.createElement("div");
+        //row.classList.add("row");
     
         if (i % 2 == 0) {
             startingColor = "whiteSquare";
@@ -194,10 +194,10 @@ function clearBoard() {
             square.id = letterPosition[j] + i
             square.onclick = function() {clickSquare(square.id)};
     
-            row.appendChild(square);
+            playGrid.appendChild(square);
     
         }
-        playGrid.appendChild(row);
+        //playGrid.appendChild(row);
     }
 }
 
