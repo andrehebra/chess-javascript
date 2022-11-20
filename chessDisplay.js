@@ -222,7 +222,7 @@ function clickSquare(id) {
     
     try {
         game.move(lastClick, id);
-
+        
         game.aiMove();
 
         clearBoard();
@@ -250,7 +250,8 @@ const game = new chessGame.Game();
 console.log(game);
 console.log(game.exportFEN())
 
-fenDisplay(game.exportFEN());
+game.aiMove();
 
+fenDisplay(game.exportFEN());
 
 
