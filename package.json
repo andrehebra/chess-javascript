@@ -20,6 +20,7 @@
     "babelify": "^10.0.0",
     "chess.js": "^1.0.0-alpha.0",
     "js-chess-engine": "^1.0.2",
+    "stockfish": "^15.0.0",
     "typescript": "^4.8.4"
   }
 }
